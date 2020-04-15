@@ -1,1 +1,5 @@
-<p>tasks-item works!</p>
+<div class="task__item">
+    <h4 class="task__item">{{task.title}}</h4>
+    <p class="task__description">{{task.description}}</p>
+    <button (click)="deleteTask(task.id)">Delete Task</button>
+</div>
