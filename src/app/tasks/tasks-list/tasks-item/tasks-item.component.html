@@ -1,8 +1,15 @@
 <div class="task__item">
-    <h4 class="task__item">{{task.title}}</h4>
-    <p class="task__description">{{task.description}}</p>
+    <input class="task__checkbox" type="checkbox" [checked]="task.done" (change)="taskToggle(task.id)">
+    <div class="task__content">
+        <h4 class="task__title" [ngClass]="{'done': task.done}">{{task.title}}</h4>
+        <p class="task__description" [ngClass]="{'done': task.done}">{{task.description}}</p>
+    </div>
     <div class="task__control">
-        <button (click)="deleteTask(task.id)">Delete Task</button>
-        <button (click)="editTask(task.id)" class="task__btn">Edit Task</button>
+        <button class="task__btn delete" (click)="deleteTask(task.id)">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 515.556 515.556" viewBox="0 0 515.556 515.556" width="512"> <path d="m64.444 451.111c0 35.526 28.902 64.444 64.444 64.444h257.778c35.542 0 64.444-28.918 64.444-64.444v-322.222h-386.666z" /> <path d="m322.222 32.222v-32.222h-128.889v32.222h-161.111v64.444h451.111v-64.444z" /></svg>
+        </button>
+        <button class="task__btn create" [routerLink]="'edit/' + [task.id]">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 383.947 383.947" style="enable-background:new 0 0 383.947 383.947;" xml:space="preserve"> <g> <g> <g> <polygon points="0,303.947 0,383.947 80,383.947 316.053,147.893 236.053,67.893" /> <path d="M377.707,56.053L327.893,6.24c-8.32-8.32-21.867-8.32-30.187,0l-39.04,39.04l80,80l39.04-39.04C386.027,77.92,386.027,64.373,377.707,56.053z" /> </g> </g> </g> </svg>
+        </button>
     </div>
 </div>

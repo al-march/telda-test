@@ -32,4 +32,10 @@ export class TasksService {
     return this.tasks.find(task => task.id === id)
   }
 
+  toggleTaskStatus(id) {
+    const targetTask = this.tasks.findIndex(task => task.id === id);
+    this.tasks[targetTask].done = !this.tasks[targetTask].done;
+    this.tasksSubj.next(this.tasks);
+  }
+
 }

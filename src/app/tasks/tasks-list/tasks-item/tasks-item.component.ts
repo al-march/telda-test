@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Task } from '@app/task';
 import { TasksService } from '@app/tasks/tasks.service';
-import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tasks-item',
@@ -15,15 +14,10 @@ export class TasksItemComponent implements OnInit {
   constructor(private service: TasksService) { }
 
   ngOnInit(): void {
-    
   }
 
-  deleteTask(id) {
-    this.service.deleteTask(id)
-  }
+  deleteTask = (id: number) => this.service.deleteTask(id)
 
-  editTask(id) {
-    
-  }
+  taskToggle = (id: number) => this.service.toggleTaskStatus(id)
 
 }
