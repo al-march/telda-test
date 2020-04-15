@@ -14,7 +14,7 @@ export class TasksService {
   constructor() { }
 
   getTasks() {
-    this.tasksSubj.next(TASKS);
+    this.tasksSubj.next(this.tasks);
     return this.tasksSubj;
   }
 
