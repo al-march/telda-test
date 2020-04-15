@@ -28,9 +28,8 @@ export class TasksService {
     this.tasksSubj.next(this.tasks);
   }
 
-  getTaskById(id: number) {
-    return this.tasks.find(task => task.id === id)
-  }
+  getTaskById = (id: number) => this.tasks.find(task => task.id === id)
+
 
   editTask(id, editorFields) {
     const editedIndex = this.tasks.findIndex(task => task.id === id);
