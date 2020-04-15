@@ -5,8 +5,10 @@ import { TasksNewComponent } from './tasks-new/tasks-new.component';
 
 
 const routes: Routes = [
-  { path: 'tasks', component: TasksComponent },
-  { path: 'tasks/new', component: TasksNewComponent },
+  { path: 'tasks', component: TasksComponent, children: [
+    { path: 'new', component: TasksNewComponent },
+  ]},
+  
 ];
 
 @NgModule({
