@@ -1,3 +1,7 @@
 <h3>Edit Task</h3>
 
-<p>tasks-edit works!</p>
+<form [formGroup]="form" class="task__form" (submit)="acceptEdit()">
+    <input class="task__input" type="text" placeholder="Tilte of task" formControlName="title" required>
+    <input class="task__input"  type="text" placeholder="Description of task" formControlName="description" required>
+    <button class="task__submit" type="submit" [disabled]="!form.valid">Accept</button>
+</form>
