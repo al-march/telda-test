@@ -10,7 +10,36 @@
     width: 100%;
     max-width: 450px;
     padding: 30px;
+    padding-top: 15px;
     background-color: #ededed;
     box-shadow: 0 0 30px -5px #2c3e50;
     border-radius: 5px;
+
+    &__title {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    &__nav {
+        @include flex(row, center, center);
+
+    }
+
+    &__link {
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #777;
+        outline: none;
+        cursor: pointer;
+
+        &.active {
+            color: $accent;
+        }
+
+        & + & {
+            border-left: 1px solid #ccc;
+        }
+    }
 }

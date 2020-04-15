@@ -1,7 +1,13 @@
 <main class="main">
   <div class="todo">
     <div class="todo__content">
-      <h2>TODO app</h2>
+      <nav class="todo__nav">
+        <button class="todo__link" routerLink="/tasks" routerLinkActive="active">Список задач</button>
+        <button class="todo__link" routerLinkActive="active">Завершенные</button>
+      </nav>
+      <h1 class="todo__title">TODOs</h1>
+
+      <router-outlet></router-outlet>
     </div>
   </div>
 </main>
