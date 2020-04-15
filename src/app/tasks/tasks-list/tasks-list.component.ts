@@ -23,4 +23,6 @@ export class TasksListComponent implements OnInit {
     this.service.deleteTask(id);
   }
 
+  isNoTasks = () => this.tasks.length === 0;
+
 }
