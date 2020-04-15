@@ -1,1 +1,5 @@
-<p>tasks-new works!</p>
+<form [formGroup]="form" class="task__form" (submit)="createTask()">
+    <input formControlName="title" type="text" placeholder="Tilte of task" required>
+    <input formControlName="description" type="text" placeholder="Description of task" required>
+    <button type="submit" [disabled]="!form.valid">Create Task</button>
+</form>

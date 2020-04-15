@@ -1,0 +1,6 @@
+@import 'vars';
+.task {
+    &__form {
+        @include flex(column)
+    }
+}

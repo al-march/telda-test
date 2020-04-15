@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Task } from '@app/task';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-tasks-new',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksNewComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private service: TasksService) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      title: [null, Validators.required],
+      description: [null, Validators.required]
+    })
+  }
+
+  createTask() {
+    const newTask: Task = { id: Date.now(), done: false, ...this.form.value};
+    this.service.createTask(newTask);
   }
 
 }
