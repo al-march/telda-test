@@ -24,6 +24,7 @@ export class TasksNewComponent implements OnInit {
   createTask() {
     const newTask: Task = { id: Date.now(), done: false, ...this.form.value};
     this.service.createTask(newTask);
+    this.form.reset()
   }
 
 }
