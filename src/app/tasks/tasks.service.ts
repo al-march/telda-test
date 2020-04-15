@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { TASKS } from '@app/tasks-mock';
 import { Task } from '@app/task';
 
@@ -8,40 +8,47 @@ import { Task } from '@app/task';
 })
 export class TasksService {
 
+  private localTasks: string = 'local-tasks';
+
   public tasksSubj: ReplaySubject<Task[]> = new ReplaySubject<Task[]>();
-  tasks: Task[] = TASKS;
+  tasks: Task[] = JSON.parse(localStorage.getItem(this.localTasks));
 
   constructor() { }
 
   getTasks() {
-    this.tasksSubj.next(this.tasks);
+    this.saveState()
     return this.tasksSubj;
   }
 
   createTask(newTask: Task) {
     this.tasks.unshift(newTask);
-    this.tasksSubj.next(this.tasks);
+    this.saveState()
   }
 
-  deleteTask(taskID) {
+  deleteTask(taskID: number) {
     this.tasks = this.tasks.filter(task => task.id !== taskID);
-    this.tasksSubj.next(this.tasks);
+    this.saveState()
   }
 
-  getTaskById = (id: number) => this.tasks.find(task => task.id === id)
+  getTaskById = (id: number): Task => this.tasks.find(task => task.id === id);
 
 
   editTask(id, editorFields) {
     const editedIndex = this.tasks.findIndex(task => task.id === id);
     this.tasks[editedIndex].title = editorFields.title;
     this.tasks[editedIndex].description = editorFields.description;
-    this.tasksSubj.next(this.tasks);
+    this.saveState()
   }
 
   toggleTaskStatus(id) {
     const targetTask = this.tasks.findIndex(task => task.id === id);
     this.tasks[targetTask].done = !this.tasks[targetTask].done;
+    this.saveState()
+  }
+
+  saveState() {
     this.tasksSubj.next(this.tasks);
+    localStorage.setItem(this.localTasks, JSON.stringify(this.tasks))
   }
 
 }
