@@ -2,6 +2,8 @@
 .task {
     &__item {
         @include flex(row, $item: center);
+        flex-grow: 1;
+        padding: 0 20px;
         margin: 10px 0;
     }  
     &__content {
@@ -26,6 +28,7 @@
     &__control {
         @include flex(column, space-between, center);
         height: 100%;
+        margin-left: auto;
     }
     &__btn {
         @include flex(row, center, center);

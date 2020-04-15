@@ -1,5 +1,7 @@
+<h3>Create new Task</h3>
+
 <form [formGroup]="form" class="task__form" (submit)="createTask()">
-    <input formControlName="title" type="text" placeholder="Tilte of task" required>
-    <input formControlName="description" type="text" placeholder="Description of task" required>
-    <button type="submit" [disabled]="!form.valid">Create Task</button>
+    <input class="task__input" type="text" placeholder="Tilte of task" formControlName="title" required>
+    <input class="task__input"  type="text" placeholder="Description of task" formControlName="description" required>
+    <button class="task__submit" type="submit" [disabled]="!form.valid">Create Task</button>
 </form>
