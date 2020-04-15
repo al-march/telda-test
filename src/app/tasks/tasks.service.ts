@@ -32,6 +32,13 @@ export class TasksService {
     return this.tasks.find(task => task.id === id)
   }
 
+  editTask(id, editorFields) {
+    const editedIndex = this.tasks.findIndex(task => task.id === id);
+    this.tasks[editedIndex].title = editorFields.title;
+    this.tasks[editedIndex].description = editorFields.description;
+    this.tasksSubj.next(this.tasks);
+  }
+
   toggleTaskStatus(id) {
     const targetTask = this.tasks.findIndex(task => task.id === id);
     this.tasks[targetTask].done = !this.tasks[targetTask].done;

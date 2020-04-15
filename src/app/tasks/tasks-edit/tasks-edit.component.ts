@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '../tasks.service';
 import { Task } from '@app/task';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -17,6 +17,7 @@ export class TasksEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: TasksService,
     private formBuilder: FormBuilder
   ) { }
@@ -35,7 +36,8 @@ export class TasksEditComponent implements OnInit {
   }
 
   acceptEdit() {
-    
+    this.service.editTask(this.taskID, this.form.value);
+    this.router.navigate(['tasks']);
   }
 
 }
