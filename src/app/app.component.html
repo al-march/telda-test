@@ -2,9 +2,10 @@
   <div class="todo">
     <div class="todo__content">
       <nav class="todo__nav">
-        <button class="todo__link" routerLink="/tasks" routerLinkActive="active">Список задач</button>
-        <button class="todo__link" routerLinkActive="active">Завершенные</button>
+        <button class="todo__link" routerLink="/tasks">Список задач</button>
+        <button class="todo__add" routerLink="/tasks/new">+</button>
       </nav>
+
       <h1 class="todo__title">TODOs</h1>
 
       <router-outlet></router-outlet>

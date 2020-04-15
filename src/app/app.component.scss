@@ -42,4 +42,16 @@
             border-left: 1px solid #ccc;
         }
     }
+    &__add {
+        margin-left: auto;
+        background-color: $accent;
+        height: 26px;
+        width: 26px;
+        border-radius: 100%;
+        font-weight: 900;
+        border: none;
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+    }
 }
