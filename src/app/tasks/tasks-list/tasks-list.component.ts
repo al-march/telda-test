@@ -14,15 +14,11 @@ export class TasksListComponent implements OnInit {
   constructor(private service: TasksService) { }
 
   ngOnInit(): void {
-    this.service.getTasks().subscribe(tasks => {
-      this.tasks = tasks;
-    });
+    this.service.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-  deleteTask(id) {
-    this.service.deleteTask(id);
-  }
-
+  deleteTask = (id: number) => this.service.deleteTask(id);
+  
   isNoTasks = () => this.tasks.length === 0;
 
 }
