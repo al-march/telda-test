@@ -1,1 +1,3 @@
-<app-tasks-item *ngFor="let task of tasks" [task]="task"></app-tasks-item>
+<h3>Tasks List</h3>
+
+<app-tasks-item *ngFor="let task of tasks" [task]="task" [routerLink]="'edit/' + [task.id]"></app-tasks-item>
