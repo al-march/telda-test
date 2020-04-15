@@ -19,4 +19,10 @@ export class TasksListComponent implements OnInit {
     })
   }
 
+  deleteTask(id) {
+    this.service.deleteTask(id).subscribe(response => {
+      this.tasks = response;
+    })
+  }
+
 }

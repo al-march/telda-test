@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Task } from '@app/task';
 import { TasksService } from '@app/tasks/tasks.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tasks-item',
@@ -10,15 +11,12 @@ import { TasksService } from '@app/tasks/tasks.service';
 export class TasksItemComponent implements OnInit {
 
   @Input() task: Task;
+  @Output() deleteTask = new EventEmitter()
 
-  constructor(private service: TasksService) { }
+  constructor() { }
 
   ngOnInit(): void {
     
-  }
-
-  deleteTask(taskID) {
-    this.service.deleteTask(taskID);
   }
 
 }
