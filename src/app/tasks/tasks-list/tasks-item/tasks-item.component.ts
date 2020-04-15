@@ -11,11 +11,18 @@ import { EventEmitter } from '@angular/core';
 export class TasksItemComponent implements OnInit {
 
   @Input() task: Task;
-  @Output() deleteTask = new EventEmitter()
 
-  constructor() { }
+  constructor(private service: TasksService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  deleteTask(id) {
+    this.service.deleteTask(id)
+  }
+
+  editTask(id) {
     
   }
 

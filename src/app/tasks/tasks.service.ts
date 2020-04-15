@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, ReplaySubject } from 'rxjs';
 import { TASKS } from '@app/tasks-mock';
 import { Task } from '@app/task';
 
@@ -8,20 +8,24 @@ import { Task } from '@app/task';
 })
 export class TasksService {
 
+  public tasksSubj: ReplaySubject<Task[]> = new ReplaySubject<Task[]>();
   tasks: Task[] = TASKS;
 
   constructor() { }
 
   getTasks() {
-    return of(this.tasks)
+    this.tasksSubj.next(TASKS);
+    return this.tasksSubj;
   }
-  
-  createTask(newTask) {
-    
+
+  createTask(newTask: Task) {
+    this.tasks.unshift(newTask);
+    this.tasksSubj.next(this.tasks);
   }
-  deleteTask(taskID): Observable<any> {
+
+  deleteTask(taskID) {
     this.tasks = this.tasks.filter(task => task.id !== taskID);
-    return of(this.tasks);
+    this.tasksSubj.next(this.tasks);
   }
 
 }
