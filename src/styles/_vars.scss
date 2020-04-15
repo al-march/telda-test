@@ -1,0 +1,11 @@
+
+$gradient: linear-gradient(180deg,#2ebf91,#8360c3);
+
+// Mixins
+@mixin flex($direction, $content: flex-start, $item: stretch, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $item;
+    flex-wrap: $wrap;
+}
