@@ -28,4 +28,8 @@ export class TasksService {
     this.tasksSubj.next(this.tasks);
   }
 
+  getTaskById(id: number) {
+    return this.tasks.find(task => task.id === id)
+  }
+
 }
