@@ -36,8 +36,12 @@ export class TasksEditComponent implements OnInit {
   }
 
   acceptEdit() {
-    this.service.editTask(this.taskID, this.form.value);
-    this.router.navigate(['tasks']);
+    try {
+      this.service.editTask(this.taskID, this.form.value);
+      this.router.navigate(['tasks']);
+    } catch (error) {
+      this.router.navigate(['tasks']);
+    }
   }
 
 }
